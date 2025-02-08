@@ -6,7 +6,7 @@ function adicionarAmigo() {
     const nome = document.getElementById('amigo').value.trim();
 
     // Validação: se o campo estiver vazio
-    if (nome === " ") {
+    if (nome === "") {
         alert("Por favor, insira um nome.");
         return; // Se estiver vazio, sai da função
     }
@@ -23,16 +23,31 @@ function adicionarAmigo() {
     // Atualiza a lista exibida
     atualizarLista();
 }
-// Função para atualizar a lista de amigos no HTML
-function atualizarLista() {
-    // Seleciona o elemento da lista onde os amigos serão exibidos
-    const listaAmigos = document.getElementById('listaAmigos');
-    listaAmigos.innerHTML = ""; // Limpa a lista existente
 
-    // Loop para percorrer o array de amigos e adicionar cada nome como um item de lista
+function atualizarLista() {
+   
+    const listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.innerHTML = ""; 
+
+   
     for (let i = 0; i < amigos.length; i++) {
         const li = document.createElement('li');
         li.textContent = amigos[i];
         listaAmigos.appendChild(li);
     }
+}
+
+function sortearAmigo(){
+    if (amigos.length === 0){
+        alert("Nao tem amigo na lista");
+        return;
+    }
+    const Sorteio = Math.floor(Math.random()*amigos.length);
+
+    const amigosSorteado = amigos[Sorteio];
+
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `Amigos Secreto e: ${amigosSorteado}`;
+
+
 }
